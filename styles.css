@@ -197,14 +197,77 @@ header nav ul li a {
   text-align: center;
   margin-bottom: 1rem;
   color: #fff; /* Restore original section title color */
+  margin-top: auto;
 }
 
 #skills ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap; /* Allow skill buttons to wrap to new lines */
   justify-content: center;
   gap: 1rem;
   padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make each skill button responsive */
+#skills ul li,
+#skills ul li.skill-btn {
+  /* ...existing code... */
+  flex: 1 1 180px; /* Allow to grow and shrink, min width 180px */
+  max-width: 220px;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+
+/* Make the images inside each skill wrap if needed */
+#skills ul li.skill-btn .skills-images-float {
+  /* ...existing code... */
+  flex-wrap: wrap;
+  width: 100%;
+  /* ...existing code... */
+  gap: 12px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  #skills ul {
+    gap: 0.5rem;
+  }
+  #skills ul li,
+  #skills ul li.skill-btn {
+    min-width: 100px;
+    max-width: 160px;
+    padding: 0.5rem;
+  }
+  #skills ul li.skill-btn .skills-images-float img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  #skills ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #skills ul li,
+  #skills ul li.skill-btn {
+    width: 90vw;
+    max-width: 98vw;
+    min-width: 0;
+    margin: 0.25rem 0;
+  }
+  #skills ul li.skill-btn .skills-images-float {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  #skills ul li.skill-btn .skills-images-float img {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 #skills ul li {
@@ -212,12 +275,180 @@ header nav ul li a {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   color: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  position: relative;
+  min-width: 100px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: 
+    box-shadow 0.3s,
+    background 0.3s,
+    color 0.3s,
+    border-radius 0.3s,
+    width 0.3s,
+    height 0.3s,
+    min-width 0.3s,
+    min-height 0.3s,
+    font-size 0.3s,
+    padding 0.3s,
+    transform 0.3s;
+  box-shadow: none; /* Remove shadow */
+  margin: 0 0.5rem; /* Add horizontal space between skill items */
 }
 
-#skills ul li:hover {
-  transform: scale(1.1); /* Slightly enlarge the item */
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Add a subtle shadow */
+/* Target only the first skill (HTML & CSS) on hover */
+#skills ul li:first-child {
+  transition: 
+    box-shadow 0.3s,
+    background 0.3s,
+    color 0.3s,
+    border-radius 0.3s,
+    width 0.3s,
+    height 0.3s,
+    min-width 0.3s,
+    min-height 0.3s,
+    font-size 0.3s,
+    padding 0.3s,
+    transform 0.3s;
+  position: relative;
+  z-index: 2;
+  box-shadow: none; /* Remove shadow */
+  margin: 0 0.5rem; /* Keep the same margin on hover */
+}
+
+#skills ul li:first-child:hover {
+  width: auto;
+  height: auto;
+  min-width: 100px;
+  min-height: 40px;
+  border-radius: 5px;
+  background: #333;
+  box-shadow: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: initial;
+  padding: 0.5rem 1rem;
+  transform: none;
+  margin: 0 0.5rem;
+}
+
+/* Button hover effect */
+#skills ul li:first-child:hover {
+  background: #444;
+  color: #ff9800;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s,
+    border-radius 0.3s,
+    width 0.3s,
+    height 0.3s,
+    min-width 0.3s,
+    min-height 0.3s,
+    font-size 0.3s,
+    padding 0.3s,
+    transform 0.3s;
+}
+
+/* Generalize the floating images and pop effect for all skill buttons */
+#skills ul li {
+  position: relative;
+}
+
+/* Apply the same hover effect to all skill buttons using .skill-btn */
+#skills ul li.skill-btn {
+  background: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: #fff;
+  position: relative;
+  min-width: 100px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition:
+    box-shadow 0.3s,
+    background 0.3s,
+    color 0.3s,
+    border-radius 0.3s,
+    width 0.3s,
+    height 0.3s,
+    min-width 0.3s,
+    min-height 0.3s,
+    font-size 0.3s,
+    padding 0.3s,
+    transform 0.3s;
+  box-shadow: none;
+  margin: 0 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#skills ul li.skill-btn span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Always show the images, but only pop on hover */
+#skills ul li .skills-images-float {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 0.5rem;
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  z-index: 1;
+  transition:
+    top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#skills ul li.skill-btn:hover .skills-images-float {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.07); /* Reduce the pop effect */
+  z-index: 10;
+}
+
+/* Pop effect for images on hover */
+#skills ul li.skill-btn .skills-images-float img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#skills ul li.skill-btn:hover .skills-images-float img {
+  transform: scale(1.02); /* Reduce the pop effect */
 }
 
 project {
