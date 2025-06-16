@@ -82,6 +82,11 @@ header nav ul {
   padding-top: 0; /* Remove top spacing */
   margin: 0;
   padding: 0;
+  flex-wrap: wrap; /* Allow navbar items to wrap to the next line */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18); /* Add shadow directly to the navbar ul for a wrapped effect */
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4); /* Slightly dark background for contrast */
+  padding: 0.5rem 1rem;
 }
 
 header nav ul li a {
@@ -205,7 +210,7 @@ header nav ul li a {
   display: flex;
   flex-wrap: wrap; /* Allow skill buttons to wrap to new lines */
   justify-content: center;
-  gap: 1rem;
+  gap: 0.2rem;
   padding: 0;
   width: 100%;
   box-sizing: border-box;
@@ -299,7 +304,7 @@ header nav ul li a {
 }
 
 /* Target only the first skill (HTML & CSS) on hover */
-#skills ul li:first-child {
+#skills ul li {
   transition: 
     box-shadow 0.3s,
     background 0.3s,
@@ -317,8 +322,8 @@ header nav ul li a {
   box-shadow: none; /* Remove shadow */
   margin: 0 0.5rem; /* Keep the same margin on hover */
 }
-
-#skills ul li:first-child:hover {
+/* 
+#skills ul li:hover {
   width: auto;
   height: auto;
   min-width: 100px;
@@ -333,12 +338,12 @@ header nav ul li a {
   padding: 0.5rem 1rem;
   transform: none;
   margin: 0 0.5rem;
-}
+} */
 
 /* Button hover effect */
-#skills ul li:first-child:hover {
+#skills ul li div:hover {
   background: #444;
-  color: #ff9800;
+  color: #ff9800 !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.25);
   transition:
     background 0.3s,
@@ -347,8 +352,8 @@ header nav ul li a {
     border-radius 0.3s,
     width 0.3s,
     height 0.3s,
-    min-width 0.3s,
-    min-height 0.3s,
+    min-width 0.6s,
+    min-height 0.6s,
     font-size 0.3s,
     padding 0.3s,
     transform 0.3s;
@@ -364,7 +369,7 @@ header nav ul li a {
   background: #333;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  color: #fff;
+  color: #ff9800;
   position: relative;
   min-width: 100px;
   min-height: 40px;
@@ -423,7 +428,7 @@ header nav ul li a {
 
 #skills ul li.skill-btn:hover .skills-images-float {
   position: absolute;
-  top: -120px;
+  top: -85px;
   left: 50%;
   transform: translateX(-50%) scale(1.07); /* Reduce the pop effect */
   z-index: 10;
@@ -448,7 +453,7 @@ header nav ul li a {
 }
 
 #skills ul li.skill-btn:hover .skills-images-float img {
-  transform: scale(1.02); /* Reduce the pop effect */
+  transform: scale(1.08); /* Reduce the pop effect */
 }
 
 project {
